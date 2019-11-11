@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SpringBootTest
 class CsvtranslatorApplicationTests {
 
@@ -17,17 +20,22 @@ class CsvtranslatorApplicationTests {
     }
 
     @Test
-    public void test_noCommas() {
-        String param = "Hello";
+    public void translatorTest_noCommas() {
+        List<String> param = new ArrayList();
+        param.add("Hello");
+
         String expectedResult = "[Hello]";
         String result = csvTranslatorService.translate(param);
-        Assert.isTrue(expectedResult.compareTo(result)==0, "result should equal " + param);
+        Assert.isTrue(expectedResult.compareTo(result)==0, "Result is: " + result + "; Result should equal " + expectedResult);
     }
 
-//    @Test
-//    public void test_oneComma() {
-//        String param = "Hello,World";
-//        String result = csvTranslatorService.translate(param);
-//        Assert.isTrue(param.compareTo(result)==0, "result should equal " + param);
-//    }
+    @Test
+    public void translatorTest_oneComma() {
+        List<String> param = new ArrayList();
+        param.add("Hello");
+        param.add("World");
+        String expectedResult = "[Hello] [World]";
+        String result = csvTranslatorService.translate(param);
+        Assert.isTrue(expectedResult.compareTo(result)==0, "Result is: " + result + "; Result should equal " + expectedResult);
+    }
 }
