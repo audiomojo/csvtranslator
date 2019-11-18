@@ -15,7 +15,7 @@ public class CSVTranslatorController {
     CSVTranslatorService csvTranslatorService;
 
     @RequestMapping("/translate")
-    public String translate(@RequestParam (value="csv") List<String> parsedCSV){
+    public String translate(@RequestParam (value="csv") List<List<String>> parsedCSV){
         return csvTranslatorService.translate(parsedCSV);
     }
 }

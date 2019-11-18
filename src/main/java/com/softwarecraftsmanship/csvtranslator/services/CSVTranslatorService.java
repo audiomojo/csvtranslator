@@ -6,9 +6,9 @@ import java.util.List;
 
 @Service
 public class CSVTranslatorService {
-    public String translate(List<String> parsedCSV) {
+    public String translate(List<List<String>> parsedCSV) {
         StringBuilder builder = new StringBuilder();
-        parsedCSV.forEach(element -> builder.append("["+ element +"] "));
+        parsedCSV.forEach().forEach(element -> builder.append("["+ element +"] "));
         String result = builder.toString();
         return result.substring(0,result.length()-1);
     }
