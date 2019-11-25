@@ -8,7 +8,10 @@ import java.util.List;
 public class CSVTranslatorService {
     public String translate(List<List<String>> parsedCSV) {
         StringBuilder builder = new StringBuilder();
-        parsedCSV.forEach().forEach(element -> builder.append("["+ element +"] "));
+        parsedCSV.forEach(row -> {
+            row.forEach(element -> builder.append("["+ element +"] "));
+            builder.append("\n");
+        });
         String result = builder.toString();
         return result.substring(0,result.length()-1);
     }
